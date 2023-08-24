@@ -20,6 +20,7 @@ public class A0_TEST {
         System.out.println(a);
         c = new Integer(4);
         System.out.println(a);
+        System.out.println(c);
 
 
     }
