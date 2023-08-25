@@ -192,6 +192,21 @@ public class A3_ArrayAndLinkedList {
         return false;
     }
 
+
+    public static boolean hasCycleMy(ListNode head) {
+        ListNode curr = head;
+        Set<Integer> valSet = new HashSet<>();
+        while (curr.next != null) {
+            if (valSet.contains(curr.getVal())) {
+                return true;
+            }
+            valSet.add(curr.getVal());
+            curr = curr.next;
+
+        }
+        return false;
+    }
+
     /**
      * 判断链表是否有环
      * 快慢指针,快指针移动2步,慢指针移动1步,最后判断快慢指针是否相遇
@@ -211,6 +226,23 @@ public class A3_ArrayAndLinkedList {
             fast = fast.next.next;
         }
 
+        return true;
+    }
+
+    public static boolean hasCycle2My(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != null && fast != null && slow.getVal() != fast.getVal()) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
         return true;
     }
 

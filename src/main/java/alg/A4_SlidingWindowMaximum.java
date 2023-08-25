@@ -3,7 +3,6 @@ package alg; /**
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
 
-import com.google.common.collect.Lists;
 import tools.PrintUtil;
 
 import java.util.*;
@@ -49,11 +48,8 @@ public class A4_SlidingWindowMaximum {
         int n = nums.length;
 
         // PriorityQueue 默认是小顶堆, 所以重写compare方法改成大顶堆,减法就是升降序
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
-            public int compare(int[] pair1, int[] pair2) {
-                return pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>(
+                (pair1, pair2) -> pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1]);
 
         // 为了方便判断堆顶元素与滑动窗口的位置关系,可以定义二元数组[num, index],表示 元素num 在数组中的下标为index。
         // 前k个元素先入列
