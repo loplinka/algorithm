@@ -6,38 +6,38 @@ package alg; /**
 /**
  *
  * @author baojiang
- * @version Êı¾İ½á¹¹ºÍËã·¨·ÖÀà: DataStructureAlgorithm.java, v 0.1 2022Äê09ÔÂ26ÈÕ ÏÂÎç4:47 baojiang Exp $
+ * @version æ•°æ®ç»“æ„å’Œç®—æ³•åˆ†ç±»: DataStructureAlgorithm.java, v 0.1 2022å¹´09æœˆ26æ—¥ ä¸‹åˆ4:47 baojiang Exp $
  */
 public class A1_DataStructureAlgorithm {
 
     /**
-     *      --DataStructureÊı¾İ½á¹¹·ÖÀà--
-     *  Array Êı×é : ÄÚ´æÀïÁ¬ĞøµÄ´æ´¢ÇøÓò,¿ÉÒÔÍ¨¹ıÏÂ±êÈÎÒâ·ÃÎÊ
-     *  Stack/Queue Õ»/¶ÓÁĞ
-     *  Priority Queue(heap)ÓÅÏÈ¶ÓÁĞ(¶Ñ)
-     *  LinkedList(single/double)Á´±í
-     *  Tree/Binary Tree Ê÷/¶ş²æÊ÷
-     *  Binary Search Tree ¶ş²æËÑË÷Ê÷
-     *  HashTable ¹şÏ£±í
-     *  Disjoint Set ²¢²é¼¯
-     *  Trie ×ÖµäÊ÷
-     *  BloomFilter ²¼Â¡Ä·¹ıÂËÆ÷
+     *      --DataStructureæ•°æ®ç»“æ„åˆ†ç±»--
+     *  Array æ•°ç»„ : å†…å­˜é‡Œè¿ç»­çš„å­˜å‚¨åŒºåŸŸ,å¯ä»¥é€šè¿‡ä¸‹æ ‡ä»»æ„è®¿é—®
+     *  Stack/Queue æ ˆ/é˜Ÿåˆ—
+     *  Priority Queue(heap)ä¼˜å…ˆé˜Ÿåˆ—(å †)
+     *  LinkedList(single/double)é“¾è¡¨
+     *  Tree/Binary Tree æ ‘/äºŒå‰æ ‘
+     *  Binary Search Tree äºŒå‰æœç´¢æ ‘
+     *  HashTable å“ˆå¸Œè¡¨
+     *  Disjoint Set å¹¶æŸ¥é›†
+     *  Trie å­—å…¸æ ‘
+     *  BloomFilter å¸ƒéš†å§†è¿‡æ»¤å™¨
      *  LRU Cache
      */
 
 
     /***
-     *      --AlgorithmËã·¨·ÖÀà--
-     *  General Coding ½øµê±ä³ÉÌâÄ¿,Ã»ÓĞ¹éÄÉÊı¾İ½á¹¹,Ó²Ğ´´úÂë
-     *  In-order/Pre-order/Post-Order traversal Ê÷µÄ±éÀú,Ç°ÖĞºóĞò±éÀú
-     *  Greedy Ì°ĞÄËã·¨
-     *  Recursion/Backtrace µİ¹é/»ØËİ
-     *  Breadth-first search ¹ã¶ÈÓÅÏÈ²éÕÒ
-     *  Depth-first search Éî¶ÈÓÅÏÈ²éÕÒ
-     *  Divide and Conquer ·ÖÖÎ
-     *  Dynamic Programming ¶¯Ì¬¹æ»®
-     *  Binary Search ¶ş·Ö²éÕÒ
-     *  Graph Í¼
+     *      --Algorithmç®—æ³•åˆ†ç±»--
+     *  General Coding è¿›åº—å˜æˆé¢˜ç›®,æ²¡æœ‰å½’çº³æ•°æ®ç»“æ„,ç¡¬å†™ä»£ç 
+     *  In-order/Pre-order/Post-Order traversal æ ‘çš„éå†,å‰ä¸­ååºéå†
+     *  Greedy è´ªå¿ƒç®—æ³•
+     *  Recursion/Backtrace é€’å½’/å›æº¯
+     *  Breadth-first search å¹¿åº¦ä¼˜å…ˆæŸ¥æ‰¾
+     *  Depth-first search æ·±åº¦ä¼˜å…ˆæŸ¥æ‰¾
+     *  Divide and Conquer åˆ†æ²»
+     *  Dynamic Programming åŠ¨æ€è§„åˆ’
+     *  Binary Search äºŒåˆ†æŸ¥æ‰¾
+     *  Graph å›¾
      *
      */
 
