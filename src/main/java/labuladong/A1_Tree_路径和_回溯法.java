@@ -10,7 +10,7 @@ import base.TreeNode;
  * @author Baojiang Yang
  * @version 路径和: A1_Tree_路径和.java, v 0.1 2023年09月17日 12:42  Baojiang Yang Exp $
  */
-public class A1_Tree_路径和 {
+public class A1_Tree_路径和_回溯法 {
 
     static boolean found  = false;
     static int     curSum = 0;
