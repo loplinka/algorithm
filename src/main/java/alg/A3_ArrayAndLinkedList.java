@@ -163,6 +163,11 @@ public class A3_ArrayAndLinkedList {
         return  dummyHead.next;
     }
 
+    /**
+     * 交换链表的两两相邻元素: 递归法
+     * @param head
+     * @return
+     */
     public ListNode swapPairsRecursion(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -181,7 +186,7 @@ public class A3_ArrayAndLinkedList {
      */
     public static boolean hasCycle(ListNode head) {
         ListNode curr = head;
-        Set<Integer> set = new HashSet<Integer>();
+        Set<Integer> set = new HashSet<>();
         while (curr != null) {
             if (set.contains(curr.getVal())) {
                 return true;
