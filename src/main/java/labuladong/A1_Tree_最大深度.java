@@ -49,4 +49,33 @@ public class A1_Tree_最大深度 {
         int rightMax = maxDepth(root.right);
         return 1 + Math.max(leftMax, rightMax);
     }
+
+    /**
+     *     3
+     *    / \
+     *   9   20
+     *      / \
+     *     15 7
+     *      \
+     *      4
+     * @return
+     */
+    public static TreeNode createBinTree() {
+        TreeNode leaf7 = new TreeNode(7);
+        TreeNode leaf4 = new TreeNode(4);
+
+        TreeNode parent15 = new TreeNode(15, null, leaf4);
+
+        TreeNode left9 = new TreeNode(9, null, null);
+        TreeNode right20 = new TreeNode(20, parent15, leaf7);
+
+        return new TreeNode(3, left9, right20);
+    }
+
+    public static void main(String[] args) {
+        // 测试用例
+        TreeNode root = createBinTree();
+        traverse(root);
+        System.out.println(res);
+    }
 }

@@ -38,4 +38,9 @@ public class A1_Tree_»ù´¡ {
 
     }
 
+    public static void main(String[] args) {
+        // ²âÊÔÓÃÀı
+
+    }
+
 }
