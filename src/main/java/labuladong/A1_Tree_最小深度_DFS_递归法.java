@@ -42,7 +42,6 @@ public class A1_Tree_最小深度_DFS_递归法 {
         depth--;
     }
 
-
     /**
      * 上述算法可以改写成如下形式,把所有变量纳入到函数内
      */
@@ -65,9 +64,6 @@ public class A1_Tree_最小深度_DFS_递归法 {
 
         return min_depth + 1;
     }
-
-
-
 
     /**
      *     3

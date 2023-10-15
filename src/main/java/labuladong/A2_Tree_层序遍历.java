@@ -98,7 +98,6 @@ public class A2_Tree_²ãĞò±éÀú {
      * @param args
      */
 
-
     public static void main(String[] args) {
 
         LinkedList<Integer> level = new LinkedList<>();

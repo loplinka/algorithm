@@ -17,6 +17,11 @@ import base.TreeNode;
  */
 public class A2_Tree_最小深度_层序遍历法 {
 
+    /**
+     * 最小深度
+     * @param root
+     * @return
+     */
     public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -31,7 +36,7 @@ public class A2_Tree_最小深度_层序遍历法 {
             for (int i = 0; i < size; i++) {
                 TreeNode curr = q.poll();
                 // 判断是否达到终点
-                if (curr.left == null && curr.right ==null) {
+                if (curr.left == null && curr.right == null) {
                     return depth;
                 }
                 if (curr.left != null) {

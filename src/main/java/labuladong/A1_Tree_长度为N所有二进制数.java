@@ -24,14 +24,14 @@ public class A1_Tree_长度为N所有二进制数 {
      * @param n
      *
      */
-    static  void genBinNumber(int n) {
+    static void genBinNumber(int n) {
         if (n == 0) {
             System.out.println(path.toString());
             return;
         }
 
         // 此处2是多少扫就代表几进制,比如是10就是10进制
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             // 前序位置,进入节点
             path.append(i);
             // 递归子节点, 此时的n就是层数,每走一层就减1
@@ -45,6 +45,5 @@ public class A1_Tree_长度为N所有二进制数 {
     public static void main(String[] args) {
         genBinNumber(3);
     }
-
 
 }

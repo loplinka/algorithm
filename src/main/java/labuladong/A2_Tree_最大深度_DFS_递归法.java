@@ -41,7 +41,7 @@ public class A2_Tree_最大深度_DFS_递归法 {
     }
 
     /** 上述的基础写法,便于理解递归,可以把上述方法的外部成员写到函数里边 */
-     public int maxDepth2(TreeNode root) {
+    public int maxDepth2(TreeNode root) {
         if (root == null) {
             return 0;
         }

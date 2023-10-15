@@ -61,9 +61,6 @@ public class A1_Tree_路径和_回溯法 {
         TreeNode right = new TreeNode(3);
         root.left = left;
 
-
-
-
     }
 
 }

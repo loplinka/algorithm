@@ -13,7 +13,7 @@ import base.TreeNode;
  */
 public class A1_Tree_二叉树的基本遍历框架 {
 
-    public void traverse(TreeNode  root) {
+    public void traverse(TreeNode root) {
         if (root == null) {
             return;
         }
