@@ -2,15 +2,14 @@
  * Hailiang.com Inc.
  * Copyright (c) 2004-2023 All Rights Reserved.
  */
-package la;
+package labuladong;
 
 /**
  *
  * @author Baojiang Yang
- * @version : A2_Tree_DFS和BFS的总结.java, v 0.1 2023年09月26日 18:17  Baojiang Yang Exp $
+ * @version : A2_Tree_DFS和BFS的总结.java, v 0.1 2023年10月15日 17:15  Baojiang Yang Exp $
  */
 public class A2_Tree_DFS和BFS的总结 {
-
     /**
      * 1.DFS的时间复杂度是0(n),BFS也是0(n)
      * 2.DFS空间复杂度O(n),BFS是O(2的n次方),因为节点会指数级的增长

@@ -2,7 +2,7 @@
  * Hailiang.com Inc.
  * Copyright (c) 2004-2023 All Rights Reserved.
  */
-package la;
+package labuladong;
 
 import java.util.Queue;
 
