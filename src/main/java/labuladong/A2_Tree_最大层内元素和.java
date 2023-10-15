@@ -18,7 +18,7 @@ import base.TreeNode;
 public class A2_Tree_最大层内元素和 {
 
     /**
-     * 还是
+     * 最大层内元素和
      * @param root
      * @return
      */

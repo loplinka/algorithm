@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import base.MultiTreeNode;
 import com.google.common.collect.Lists;
 
 import base.TreeNode;
@@ -20,10 +21,10 @@ import base.TreeNode;
 public class A2_Tree_BFS_层序遍历法 {
 
     /**
-     * 层序遍历
+     * 二叉树的层序遍历
      * 1.使用while+for循环配合Queue的使用,是层序遍历的基本套路
      * 2.使用链表和队列的addLast和addFirst方法,可以实现上下和左右的笛卡尔积遍历
-     * 3.之前学的使用地柜的方式遍历的方式就是DFS
+     * 3.之前学的使用递归的方式遍历的方式就是DFS
      * @param root
      * @return
      */
@@ -54,6 +55,35 @@ public class A2_Tree_BFS_层序遍历法 {
                 }
             }
             res.addLast(level);
+        }
+
+        return res;
+    }
+
+    /**
+     * N叉树的层序遍历
+     *
+     */
+    public List<List<Integer>> levelOrder(MultiTreeNode root) {
+
+        List<List<Integer>> res = Lists.newLinkedList();
+        if (root == null) {
+            return res;
+        }
+
+        Queue<MultiTreeNode> q = Lists.newLinkedList();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int sz = q.size();
+            List<Integer> level = Lists.newLinkedList();
+            for (int i = 0; i < sz; i++) {
+                MultiTreeNode curr = q.poll();
+                level.add(curr.val);
+                for (MultiTreeNode child : curr.childrens) {
+                    q.offer(child);
+                }
+            }
+            res.add(level);
         }
 
         return res;
