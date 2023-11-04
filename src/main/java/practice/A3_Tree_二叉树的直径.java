@@ -2,7 +2,7 @@
  * Hailiang.com Inc.
  * Copyright (c) 2004-2023 All Rights Reserved.
  */
-package exercise;
+package practice;
 
 import base.TreeNode;
 
@@ -52,9 +52,9 @@ public class A3_Tree_二叉树的直径 {
     }
 
     /**
-     * 1.上述这个解法是正确的，但是运行时间很长，原因也很明显，traverse 遍历每个节点的时候还会调用递归函数 maxDepth，而 maxDepth 是要遍历子树的所有节点的，所以最坏时间复杂度是 O(N^2)
-     * 2.这就出现了刚才探讨的情况，前序位置无法获取子树信息，所以只能让每个节点调用 maxDepth 函数去算子树的深度。
-     * 3.那如何优化？我们应该把计算「直径」的逻辑放在后序位置，准确说应该是放在 maxDepth 的后序位置，因为 maxDepth 的后序位置是知道左右子树的最大深度的。
+     * <p>1.上述这个解法是正确的，但是运行时间很长，原因也很明显，traverse 遍历每个节点的时候还会调用递归函数 maxDepth，而 maxDepth 是要遍历子树的所有节点的，所以最坏时间复杂度是 O(N^2)</p>
+     * <p>2.这就出现了刚才探讨的情况，前序位置无法获取子树信息，所以只能让每个节点调用 maxDepth 函数去算子树的深度。</p>
+     * <p>3.那如何优化？我们应该把计算「直径」的逻辑放在后序位置，准确说应该是放在 maxDepth 的后序位置，因为 maxDepth 的后序位置是知道左右子树的最大深度的。</p>
      *
      */
 

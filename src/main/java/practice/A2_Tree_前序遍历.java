@@ -2,7 +2,7 @@
  * Hailiang.com Inc.
  * Copyright (c) 2004-2023 All Rights Reserved.
  */
-package exercise;
+package practice;
 
 import base.TreeNode;
 import com.google.common.collect.Lists;
