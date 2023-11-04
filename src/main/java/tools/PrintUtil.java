@@ -5,6 +5,7 @@
 package tools;
 
 import base.ListNode;
+import base.MultiTreeNode;
 import base.TreeNode;
 
 import java.util.Arrays;
@@ -134,4 +135,10 @@ public class PrintUtil {
         System.out.println(sb.toString());
     }
 
+    public static void print(String s, MultiTreeNode root) {
+
+    }
+
+    public static void print(String s, MultiTreeNode root, MultiTreeNode child) {
+    }
 }
