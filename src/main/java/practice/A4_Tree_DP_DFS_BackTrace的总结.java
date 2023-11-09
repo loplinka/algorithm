@@ -8,6 +8,9 @@ import base.MultiTreeNode;
 import base.TreeNode;
 import tools.PrintUtil;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author Baojiang Yang
  * @version : A3_Tree_DP_DFS_BackTrace的总结.java, v 0.1 2023年11月04日 16:58  Baojiang Yang Exp $
@@ -201,5 +204,34 @@ public class A4_Tree_DP_DFS_BackTrace的总结 {
      * 看到了吧，你回溯算法必须把「做选择」和「撤销选择」的逻辑放在 for 循环里面，否则怎么拿到「树枝」的两个端点？
      *
      */
+
+
+    /**
+     * 层序遍历
+     * 二叉树题型主要是用来培养递归思维的，而层序遍历属于迭代遍历，也比较简单，这里就过一下代码框架吧：
+     */
+
+    // 输入一棵二叉树的根节点，层序遍历这棵二叉树
+    void levelTraverse(TreeNode root) {
+        if (root == null) return;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+
+        // 从上到下遍历二叉树的每一层
+        while (!q.isEmpty()) {
+            int sz = q.size();
+            // 从左到右遍历每一层的每个节点
+            for (int i = 0; i < sz; i++) {
+                TreeNode cur = q.poll();
+                // 将下一层节点放入队列
+                if (cur.left != null) {
+                    q.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    q.offer(cur.right);
+                }
+            }
+        }
+    }
 
 }
