@@ -15,7 +15,13 @@ public class A6_Str_子串和KPM {
      * 查找P在S中的位置
      */
 
-    static int vioMatch(String s, String p) {
+    /**
+     * 暴力搜索法
+     * @param s
+     * @param p
+     * @return
+     */
+    static int vioSearch(String s, String p) {
         // 异常处理 TODO
 
         int sLength = s.length();
@@ -25,16 +31,15 @@ public class A6_Str_子串和KPM {
         int j = 0;
         while (i < sLength && j < pLength) {
 
-            // 匹配到,指针玩后移
+            // 匹配到,指针一起往后移
             if (s.charAt(i) == p.charAt(j)) {
                 i++;
                 j++;
             }
             // 未匹配到
             else {
-                // i回溯到上次匹配的下一个位置,这里是关键
+                // 当子串到了后边不匹配时候,主串的指针要退回上一次匹配的下一个位置,称为回溯
                 i = i - j + 1;
-                System.out.println(i);
                 j = 0;
             }
         }
@@ -46,8 +51,13 @@ public class A6_Str_子串和KPM {
         return -1;
     }
 
-
-    static int findMinimumSubstring(String S, String p) {
+    /**
+     * 使用了函数,无法提现出双指针操作
+     * @param S
+     * @param p
+     * @return
+     */
+    static int funSearch(String S, String p) {
         int n = S.length();
         int m = p.length();
 
@@ -64,11 +74,71 @@ public class A6_Str_子串和KPM {
         return minIndex;
     }
 
+    /**
+     * KPM算法查找子串
+     */
+    static int kpmSearch(String S, String p) {
+        int n = S.length();
+        int m = p.length();
+
+        int[] lps = computeLPSArray(p); // 计算子串p的最长前缀后缀数组
+
+        int i = 0; // 指向S的索引
+        int j = 0; // 指向p的索引
+
+        while (i < n) {
+            if (S.charAt(i) == p.charAt(j)) {
+                i++;
+                j++;
+
+                if (j == m) {
+                    return i - j; // 返回匹配子串的起始位置
+                }
+            } else {
+                if (j != 0) {
+                    j = lps[j - 1]; // 部分匹配，更新j为最长前缀后缀长度
+                } else {
+                    i++;
+                }
+            }
+        }
+
+        return -1; // 未找到匹配子串，返回-1
+    }
+
+    private static int[] computeLPSArray(String p) {
+        int m = p.length();
+
+        int[] lps = new int[m];
+        lps[0] = 0;
+
+        int len = 0;
+        int i = 1;
+
+        while (i < m) {
+            if (p.charAt(i) == p.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
+            } else {
+                if (len != 0) {
+                    len = lps[len - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+
+        return lps;
+    }
+
     public static void main(String[] args) {
-        String s = "CA";
+        String s = "BBC ABCDAB ABCDABCDABDE";
         String p = "ABCDABD";
-        System.out.println(vioMatch(s, p));
-        System.out.println(findMinimumSubstring(s, p));
+        System.out.println(vioSearch(s, p));
+        System.out.println(funSearch(s, p));
+        System.out.println(kpmSearch(s, p));
     }
 
 }
