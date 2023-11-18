@@ -5,9 +5,8 @@
 package labuladong;
 
 /**
- *
  * @author Baojiang Yang
- * @version : A2_Tree_DFS和BFS的总结.java, v 0.1 2023年10月15日 17:15  Baojiang Yang Exp $
+ * @version : A2_Tree_DFS和BFS的总结.java, v 0.1 2023年11月18日 17:59  Baojiang Yang Exp $
  */
 public class A2_Tree_DFS和BFS的总结 {
     /**

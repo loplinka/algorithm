@@ -6,10 +6,9 @@ package labuladong;
 
 /**
  * @author Baojiang Yang
- * @version : A6_Tree_BST练习题和总结.java, v 0.1 2023年10月21日 12:49  Baojiang Yang Exp $
+ * @version : A6_Tree_BST概述和大纲.java, v 0.1 2023年11月18日 18:03  Baojiang Yang Exp $
  */
 public class A6_Tree_BST概述和大纲 {
-
     /**
      * BST练习题
      *
@@ -34,6 +33,5 @@ public class A6_Tree_BST概述和大纲 {
      *  BST特性是遍历的时候非常的快,因为树高是Olog(n),所以遍历的复杂度就是Olog(n)
      *
      */
-
 
 }

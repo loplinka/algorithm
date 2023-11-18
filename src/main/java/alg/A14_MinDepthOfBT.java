@@ -12,7 +12,7 @@ import java.util.Queue;
 /**
  *
  * @author baojiang
- * @version ×îĞ¡Éî¶È: alg.A14_MinDepthOfBT.java, v 0.1 2022Äê10ÔÂ04ÈÕ ÏÂÎç11:20 baojiang Exp $
+ * @version æœ€å°æ·±åº¦: alg.A14_MinDepthOfBT.java, v 0.1 2022å¹´10æœˆ04æ—¥ ä¸‹åˆ11:20 baojiang Exp $
  */
 public class A14_MinDepthOfBT {
 

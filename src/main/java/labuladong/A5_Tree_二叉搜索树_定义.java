@@ -6,10 +6,9 @@ package labuladong;
 
 /**
  * @author Baojiang Yang
- * @version 二叉搜索树: A5_Tree_二叉搜索树.java, v 0.1 2023年10月19日 00:29  Baojiang Yang Exp $
+ * @version : A5_Tree_二叉搜索树_定义.java, v 0.1 2023年11月18日 18:03  Baojiang Yang Exp $
  */
 public class A5_Tree_二叉搜索树_定义 {
-
     /**
      *
      * 二叉搜索树BST
