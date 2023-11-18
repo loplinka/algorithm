@@ -17,6 +17,27 @@ import base.TreeNode;
 public class A1_Tree_最小深度_BFS_层序遍历法 {
 
     /**
+     * BFS框架
+     */
+    public void bfs(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            System.out.println(node.val);
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+    }
+
+    /**
      * 层序遍历,广度优先解法
      * @param root
      * @return

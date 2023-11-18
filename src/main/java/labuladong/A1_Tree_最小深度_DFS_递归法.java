@@ -6,11 +6,54 @@ package labuladong;
 
 import base.TreeNode;
 
+import java.util.Stack;
+
 /**
  * @author Baojiang Yang
  * @version : A1_Tree_最小深度.java, v 0.1 2023年09月17日 22:56  Baojiang Yang Exp $
  */
 public class A1_Tree_最小深度_DFS_递归法 {
+
+    /**
+     * DFS 框架: 迭代法
+     */
+    public void dfs(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            System.out.println(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+    }
+
+    /**
+     * 遍历二叉树,递归法
+     * @param root
+     */
+    public static void traverse2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        // 前序遍历代码位置
+        System.out.println(root.val);
+        traverse2(root.left);
+        // 中序遍历代码位置
+        System.out.println(root.val);
+        traverse2(root.right);
+        // 后序遍历代码位置
+        System.out.println(root.val);
+
+    }
 
     /**
      * 递归就是DFS算法, 和BFS区别是时间复杂度都一样,空间复杂度不一样
