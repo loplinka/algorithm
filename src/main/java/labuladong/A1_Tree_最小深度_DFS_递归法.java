@@ -6,6 +6,9 @@ package labuladong;
 
 import base.TreeNode;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -133,7 +136,78 @@ public class A1_Tree_最小深度_DFS_递归法 {
     public static void main(String[] args) {
         // 测试用例
         TreeNode root = createBinTree();
-        traverse(root);
-        System.out.println(res);
+        //  traverse(root);
+        //  System.out.println(res);
+         dfsWithLevelPrint(root);
+//        List<List<Integer>> lists = dfsWithLevel(root);
+//        System.out.println(lists);
     }
+
+    /**
+     * 打印每一层
+     * @param root
+     */
+    public static void dfsWithLevelPrint(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Integer> levelQueue = new LinkedList<>();
+
+        queue.offer(root);
+        levelQueue.offer(0);
+
+        int curLevel = 0;
+        System.out.print("Level " + curLevel + ": ");
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            int level = levelQueue.poll();
+
+            if (level != curLevel) {
+                curLevel = level;
+                System.out.println();
+                System.out.print("Level " + curLevel + ": ");
+            }
+
+            System.out.print(node.val + " ");
+
+            if (node.left != null) {
+                queue.offer(node.left);
+                levelQueue.offer(level + 1);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+                levelQueue.offer(level + 1);
+            }
+        }
+    }
+
+    /**
+     * 记录每一层
+     */
+    public static List<List<Integer>>  dfsWithLevel(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<>();
+        if (root == null) {
+            return res;
+        }
+        dfs(res, root, 0);
+        return res;
+    }
+
+    private static void dfs(List<List<Integer>> res, TreeNode root, int level) {
+        if (root == null) {
+            return;
+        }
+
+        // 每层开始时新建一个列表
+        if (res.size() == level) {
+            res.add(new LinkedList<>());
+        }
+        res.get(level).add(root.val);
+        dfs(res, root.left, level + 1);
+        dfs(res, root.right, level + 1);
+    }
+
 }
