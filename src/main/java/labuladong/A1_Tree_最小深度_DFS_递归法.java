@@ -6,6 +6,7 @@ package labuladong;
 
 import base.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -138,9 +139,12 @@ public class A1_Tree_最小深度_DFS_递归法 {
         TreeNode root = createBinTree();
         //  traverse(root);
         //  System.out.println(res);
-         dfsWithLevelPrint(root);
+         //dfsWithLevelPrint(root);
 //        List<List<Integer>> lists = dfsWithLevel(root);
 //        System.out.println(lists);
+
+        dfsLopPrint(root);
+
     }
 
     /**
@@ -185,18 +189,18 @@ public class A1_Tree_最小深度_DFS_递归法 {
     }
 
     /**
-     * 记录每一层
+     * 记录每一层,迭代法
      */
     public static List<List<Integer>>  dfsWithLevel(TreeNode root) {
         List<List<Integer>> res = new LinkedList<>();
         if (root == null) {
             return res;
         }
-        dfs(res, root, 0);
+        dfsRec(res, root, 0);
         return res;
     }
 
-    private static void dfs(List<List<Integer>> res, TreeNode root, int level) {
+    private static void dfsRec(List<List<Integer>> res, TreeNode root, int level) {
         if (root == null) {
             return;
         }
@@ -206,8 +210,45 @@ public class A1_Tree_最小深度_DFS_递归法 {
             res.add(new LinkedList<>());
         }
         res.get(level).add(root.val);
-        dfs(res, root.left, level + 1);
-        dfs(res, root.right, level + 1);
+        dfsRec(res, root.left, level + 1);
+        dfsRec(res, root.right, level + 1);
+    }
+
+    public static void dfsLopPrint(TreeNode root){
+        List<List<Integer>> lists = dfsLop(root);
+        for (List<Integer> list : lists) {
+            System.out.println(list);
+        }
+
+    }
+
+    /**
+     * 记录没一层,递归法
+     */
+    public static List<List<Integer>> dfsLop(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> levelList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                levelList.add(node.val);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            res.add(levelList);
+        }
+        return res;
     }
 
 }
