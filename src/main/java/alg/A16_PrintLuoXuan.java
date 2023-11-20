@@ -59,22 +59,22 @@ public class A16_PrintLuoXuan {
 
 
         // 行
-        int h = 0;
+        int r = 0;
         // 列
-        int l = 0;
+        int c = 0;
 
         // 迭代累加n*n个元素,他他们添加到二维数组里
-        for (int k = 1; k <= total; k ++) {
-            data[h][l] = k;
+        for (int i = 1; i <= total; i ++) {
+            data[r][c] = i;
             // 向右
             if (direction == right) {
                 // 数组向右没有超过边界n,并且元素没有被修改过, 则行不变，列号向右移动一位
-                if (l + 1 < n && data[h][l + 1] == 0) {
-                    l++;
+                if (c + 1 < n && data[r][c + 1] == 0) {
+                    c++;
                 }
                 // 则列不变，行号向下移动一位,并且修改反向
                 else {
-                    h++;
+                    r++;
                     direction = down;
                     // 继续循环
                     continue;
@@ -83,10 +83,10 @@ public class A16_PrintLuoXuan {
 
             // 向下
             if (direction == down) {
-                if (h + 1 < n && data[h + 1][l] == 0) {
-                    h++;
+                if (r + 1 < n && data[r + 1][c] == 0) {
+                    r++;
                 } else {
-                    l--;
+                    c--;
                     direction = left;
                     // 继续循环
                     continue;
@@ -95,10 +95,10 @@ public class A16_PrintLuoXuan {
 
             // 向左
             if (direction == left) {
-                if (l - 1 >= 0 && data[h][l - 1] == 0) {
-                    l--;
+                if (c - 1 >= 0 && data[r][c - 1] == 0) {
+                    c--;
                 } else {
-                    h--;
+                    r--;
                     direction = up;
                     // 继续循环
                     continue;
@@ -107,10 +107,10 @@ public class A16_PrintLuoXuan {
 
             // 向上
             if (direction == up) {
-                if (h - 1 >= 0 && data[h - 1][l] == 0) {
-                    h--;
+                if (r - 1 >= 0 && data[r - 1][c] == 0) {
+                    r--;
                 } else {
-                    l++;
+                    c++;
                     direction = right;
                     // 继续循环
                     continue;
