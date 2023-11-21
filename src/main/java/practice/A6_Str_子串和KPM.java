@@ -53,18 +53,18 @@ public class A6_Str_子串和KPM {
 
     /**
      * 使用了函数,无法提现出双指针操作
-     * @param S
+     * @param s
      * @param p
      * @return
      */
-    static int funSearch(String S, String p) {
-        int n = S.length();
+    static int funSearch(String s, String p) {
+        int n = s.length();
         int m = p.length();
 
         int minIndex = -1; // 初始化最小子串的起始位置为-1
 
         for (int i = 0; i <= n - m; i++) {
-            String substring = S.substring(i, i + m); // 截取长度为m的子串
+            String substring = s.substring(i, i + m); // 截取长度为m的子串
             if (substring.equals(p)) { // 子串与p匹配
                 minIndex = i; // 更新最小子串的起始位置
                 break; // 结束循环
