@@ -38,7 +38,7 @@ public class A6_Str_子串和KPM {
             }
             // 未匹配到
             else {
-                // 当子串到了后边不匹配时候,主串的指针要退回上一次匹配的下一个位置,称为回溯
+                // 当子串到了后边匹配失败时,主串的指针要退回上一次匹配的下一个位置,即要逐步走,称为回溯
                 i = i - j + 1;
                 j = 0;
             }
@@ -50,6 +50,8 @@ public class A6_Str_子串和KPM {
 
         return -1;
     }
+
+
 
     /**
      * 使用了函数,无法提现出双指针操作
@@ -139,6 +141,37 @@ public class A6_Str_子串和KPM {
         System.out.println(vioSearch(s, p));
         System.out.println(funSearch(s, p));
         System.out.println(kpmSearch(s, p));
+    }
+
+    /**
+     * 自主练习
+     * @param s
+     * @param p
+     * @return
+     */
+    static int vodSearchByMyself(String s, String p) {
+        // 异常处理
+
+        int sLen = s.length();
+        int pLen = p.length();
+
+        int i = 0;
+        int j = 0;
+        while (i < sLen && j < pLen) {
+            if (s.charAt(i) == p.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+
+        if (j == pLen) {
+            return i - j;
+        }
+
+        return -1;
     }
 
 }
