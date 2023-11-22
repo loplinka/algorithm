@@ -66,7 +66,7 @@ public class A2_Tree_BFS_²ãĞò±éÀú·¨ {
      */
     public List<List<Integer>> levelOrder(MultiTreeNode root) {
 
-        List<List<Integer>> res = Lists.newLinkedList();
+        LinkedList<List<Integer>> res = Lists.newLinkedList();
         if (root == null) {
             return res;
         }
