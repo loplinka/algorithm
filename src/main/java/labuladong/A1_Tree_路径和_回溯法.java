@@ -71,4 +71,36 @@ public class A1_Tree_路径和_回溯法 {
         System.out.println(hasPathSum(root, target));
     }
 
+    static boolean found2 = false;
+    static int curSum2 = 0;
+    static int target2 = 0;
+
+    public static boolean hasPathSum2(TreeNode root, int target) {
+        if (root == null) {
+            return false;
+        }
+        target2 = target;
+        traverse2(root);
+        return found2;
+    }
+
+    private static void traverse2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        // 前序做选择
+        curSum2 = curSum2 + root.val;
+
+        // 叶子节点
+        if (root.left == null && root.right == null && curSum2 == target2) {
+            found2 = true;
+        }
+        traverse2(root.left);
+        traverse2(root.right);
+
+        // 后序做选择
+        curSum2 = curSum2 - root.val;
+
+    }
+
 }

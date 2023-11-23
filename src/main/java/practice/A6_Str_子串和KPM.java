@@ -51,8 +51,6 @@ public class A6_Str_子串和KPM {
         return -1;
     }
 
-
-
     /**
      * 使用了函数,无法提现出双指针操作
      * @param s
@@ -155,6 +153,40 @@ public class A6_Str_子串和KPM {
      */
     static int vodSearchByMyself(String s, String p) {
         // 异常处理
+
+        int sLen = s.length();
+        int pLen = p.length();
+
+        int i = 0;
+        int j = 0;
+        while (i < sLen && j < pLen) {
+            if (s.charAt(i) == p.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+
+        if (j == pLen) {
+            return i - j;
+        }
+
+        return -1;
+    }
+
+    /**
+     * 自主练习
+     * @param s
+     * @param p
+     * @return
+     */
+    public static int vidSearch(String s, String p) {
+        // 异常处理
+        if (s == null || s == "" || p == null || p == "") {
+            return -1;
+        }
 
         int sLen = s.length();
         int pLen = p.length();

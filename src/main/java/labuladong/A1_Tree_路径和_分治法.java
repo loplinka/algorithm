@@ -49,4 +49,19 @@ public class A1_Tree_路径和_分治法 {
         System.out.println(hasPathSum(root, target));
     }
 
+    public static boolean hasPathSum2(TreeNode root, int target) {
+        // 异常情况
+        if (root == null) {
+            return false;
+        }
+
+        // 叶子节点
+        if (root.left == null && root.right == null && target == root.val) {
+            return true;
+        }
+
+        // 递归左右子树
+        return hasPathSum2(root.left, target - root.val) || hasPathSum2(root.right, target - root.val);
+    }
+
 }
