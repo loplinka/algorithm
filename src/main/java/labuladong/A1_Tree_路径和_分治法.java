@@ -19,7 +19,7 @@ public class A1_Tree_路径和_分治法 {
     * @param target
     * @return
     */
-    public boolean pathSum(TreeNode root, int target) {
+    public static boolean hasPathSum(TreeNode root, int target) {
         if (root == null) {
             return false;
         }
@@ -29,7 +29,24 @@ public class A1_Tree_路径和_分治法 {
         }
 
         // 问题分解成在左子树和右子树中找target - root.val 或者在右子树中找target - root.val,任何一个满足条件即可
-        return pathSum(root.left, target - root.val) || pathSum(root.right, target - root.val);
+        return hasPathSum(root.left, target - root.val) || hasPathSum(root.right, target - root.val);
+    }
+
+    public static void main(String[] args) {
+        // 写出上述算法的测试用例
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(11);
+        root.left.left.left = new TreeNode(7);
+        root.left.left.right = new TreeNode(2);
+        root.right.left = new TreeNode(13);
+        root.right.right = new TreeNode(4);
+        root.right.right.right = new TreeNode(1);
+
+        int target = 22;
+
+        System.out.println(hasPathSum(root, target));
     }
 
 }
