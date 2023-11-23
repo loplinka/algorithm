@@ -13,6 +13,7 @@ import base.TreeNode;
 public class A1_Tree_路径和_分治法 {
 
     /**
+     * leeCode 112. 路径总和
     * 二叉树中路径和等于target的路径数量
     * @param root
     * @param target
@@ -23,8 +24,8 @@ public class A1_Tree_路径和_分治法 {
             return false;
         }
         // 叶子节点,target一直往下减去遍历过的节点后,判断叶子节点是否等于剩下最后的target,等于就赋值返回结束当前递归
-        if (root.left == null && root.right == null) {
-            return root.val == target;
+        if (root.left == null && root.right == null && root.val == target) {
+            return true;
         }
 
         // 问题分解成在左子树和右子树中找target - root.val 或者在右子树中找target - root.val,任何一个满足条件即可
