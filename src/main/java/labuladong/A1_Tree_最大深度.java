@@ -78,4 +78,28 @@ public class A1_Tree_最大深度 {
         traverse(root);
         System.out.println(res);
     }
+    
+    
+    public void traverse3MS(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        depth++;
+        res = Math.max(res, depth);
+        traverse3MS(root.left);
+        traverse3MS(root.right);
+        depth--;
+    }
+
+    public int traverse4MS(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int lMax = traverse4MS(root.left);
+        int rMax = traverse4MS(root.right);
+
+        return Math.max(lMax, rMax) + 1;
+    }
 }

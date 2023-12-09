@@ -119,4 +119,42 @@ public class A18_BinarySearch {
 
         return -1;
     }
+
+
+    public boolean isIn(int[][] arr, int target) {
+        for (int row = 0; row < arr[0].length; row++) {
+            if (binSearch(arr[row], target)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean binSearch(int[] arr, int target) {
+        if (arr == null) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        if (arr[left] > target || arr[right] < target || left > right) {
+            return false;
+        }
+
+        while (left <= right) {
+            mid = (left + right) / 2;
+            if (arr[mid] == target) {
+                return true;
+            } else if (arr[mid] >= target) {
+                left = mid - 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return false;
+    }
 }

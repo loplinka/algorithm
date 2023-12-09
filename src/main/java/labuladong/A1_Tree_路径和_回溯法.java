@@ -102,5 +102,34 @@ public class A1_Tree_路径和_回溯法 {
         curSum2 = curSum2 - root.val;
 
     }
+    
+    
+    public boolean hasPathSum4(TreeNode root) {
+        if (root == null) {
+            return false;
+        }
+        
+        traverse3(root);
+        return found2;
+    }
+    
+    
+    public void traverse3(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        curSum2 = curSum2 + root.val;
+        if (root.left == null && root.right == null && curSum2 == target2) {
+            found2 = true;
+        }
+
+        traverse3(root.left);
+        traverse3(root.right);
+
+        curSum2 = curSum2 - root.val;
+
+    }
+    
 
 }

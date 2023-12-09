@@ -32,4 +32,27 @@ public class A1_Tree_翻转二叉树 {
         // 后序遍历位置
     }
 
+    public TreeNode invertTreeMS(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        traverseMS(root);
+        return root;
+    }
+
+    private void traverseMS(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        traverseMS(root.left);
+        traverseMS(root.right);
+    }
+
+
 }

@@ -22,6 +22,16 @@ public class A2_Tree_打印出每个节点的左右子树各有多少节点 {
 
         System.out.println("节点 %s 的左子树有 %d 个节点，右子树有 %d 个节点" + root + countLeft + countRight);
         return countLeft + countRight +1;
+    }
+    
+    public int count2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
 
+        int lCount = count2(root.left);
+        int rCount = count2(root.right);
+
+        return lCount + rCount + 1;
     }
 }

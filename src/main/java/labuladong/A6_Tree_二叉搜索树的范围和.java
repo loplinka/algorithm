@@ -54,17 +54,17 @@ public class A6_Tree_二叉搜索树的范围和 {
 
         // 节点比low还小,则左边无需遍历,去右边找
         if (root.val < low) {
-            traverse(root.right, low, high);
+            traverse2(root.right, low, high);
         }
         // 节点比high大,则右边无需遍历,去左边找
         else if (root.val > high) {
-            traverse(root.left, low, high);
+            traverse2(root.left, low, high);
         }
         // 否则就落入[low, high]的区间内,正常累加
         else {
             sum += root.val;
-            traverse(root.left, low, high);
-            traverse(root.right, low, high);
+            traverse2(root.left, low, high);
+            traverse2(root.right, low, high);
         }
     }
 }

@@ -63,5 +63,19 @@ public class A1_Tree_路径和_分治法 {
         // 递归左右子树
         return hasPathSum2(root.left, target - root.val) || hasPathSum2(root.right, target - root.val);
     }
+    
+    
+    public boolean hasPathSumMS(TreeNode root, int target) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.left == null && root.right == null && target == root.val) {
+            return true;
+        }
+
+        return hasPathSumMS(root.left, target = root.val) || hasPathSumMS(root.right, target = root.val);
+    }
+    
 
 }

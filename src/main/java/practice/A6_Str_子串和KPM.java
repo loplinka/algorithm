@@ -210,4 +210,30 @@ public class A6_Str_×Ó´®ºÍKPM {
         return -1;
     }
 
+    public static int vioSearchMS(String s, String p) {
+        if (s == null || s == "" || p == null || p == "") {
+            return -1;
+        }
+        int sLen = s.length();
+        int pLen = p.length();
+
+        int i = 0;
+        int j = 0;
+        while (i < sLen && j < pLen) {
+            if (s.charAt(i) == p.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+
+        if (j == pLen) {
+            return i - j;
+        }
+
+        return -1;
+    }
+
 }

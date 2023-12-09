@@ -35,4 +35,20 @@ public class A4_Tree_删除给定值的叶子节点 {
         }
         return root;
     }
+
+
+    public TreeNode removeLeafNodeMS(TreeNode root, int target) {
+        if (root == null) {
+            return null;
+        }
+
+        root.left = removeLeafNodeMS(root.left, target);
+        root.right = removeLeafNodeMS(root.right, target);
+
+        if (root.left == null && root.right == null && root.val == target) {
+            return null;
+        }
+
+        return  root;
+    }
 }
