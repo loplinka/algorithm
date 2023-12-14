@@ -133,75 +133,137 @@ public class A1_Tree_最小深度_DFS_递归法 {
     public static void main(String[] args) {
         // 测试用例
         TreeNode root = createBinTree();
-        //traverse(root);
         dfs(root);
+        System.out.println("====");
+        //dfsIteMS(root);
     }
 
+    //
+    //    public void dfsRes(TreeNode root) {
+    //        if (root == null) {
+    //            return;
+    //        }
+    //
+    //        Stack<TreeNode> stack = new Stack<>();
+    //        stack.push(root);
+    //
+    //        while (!stack.isEmpty()) {
+    //            int sz = stack.size();
+    //            for (int i = 0; i < sz; i++) {
+    //                TreeNode node = stack.pop();
+    //                System.out.println(node.val);
+    //                if (node.left != null) {
+    //                    stack.push(node.left);
+    //                }
+    //                if (node.right != null) {
+    //                    stack.push(node.right);
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    public int minDepthMS(TreeNode root) {
+    //        if (root == null) {
+    //            return 0;
+    //        }
+    //
+    //        traverse3MS(root);
+    //        return res;
+    //    }
+    //
+    //    private void traverse3MS(TreeNode root) {
+    //        if (root == null) {
+    //            return;
+    //        }
+    //        depth++;
+    //        if (root.left == null && root.right == null) {
+    //            res = Math.min(res, depth);
+    //        }
+    //        traverse3MS(root.left);
+    //        traverse3MS(root.left);
+    //        depth--;
+    //    }
+    //
+    //
+    //    public int minDepResMS(TreeNode root) {
+    //        if (root == null) {
+    //            return 0;
+    //        }
+    //
+    //        if (root.left == null && root.right == null) {
+    //            return 1;
+    //        }
+    //        int min_depth = Integer.MAX_VALUE;
+    //        if (root.left != null) {
+    //            min_depth = Math.min(minDepResMS(root.left), min_depth);
+    //        }
+    //
+    //        if (root.right != null) {
+    //            min_depth = Math.min(minDepResMS(root.right), min_depth);
+    //        }
+    //        return min_depth + 1;
+    //    }
 
-    public void dfsRes(TreeNode root) {
-        if (root == null) {
-            return;
-        }
+    //    public static void dfsIteMS(TreeNode root) {
+    //        if (root == null) {
+    //            return;
+    //        }
+    //        Stack<TreeNode> stack = new Stack<>();
+    //        stack.push(root);
+    //
+    //        while (!stack.isEmpty()) {
+    //            TreeNode node = stack.pop();
+    //            System.out.println(node.val);
+    //            if (node.left != null) {
+    //                stack.push(node.left);
+    //            }
+    //            if (node.right != null) {
+    //                stack.push(node.right);
+    //            }
+    //        }
 
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
+    //    }
 
-        while (!stack.isEmpty()) {
-            int sz = stack.size();
-            for (int i = 0; i < sz; i++) {
-                TreeNode node = stack.pop();
-                System.out.println(node.val);
-                if (node.left != null) {
-                    stack.push(node.left);
-                }
-                if (node.right != null) {
-                    stack.push(node.right);
-                }
-            }
-        }
-    }
-
-    public int minDepthMS(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        traverse3MS(root);
-        return res;
-    }
-
-    private void traverse3MS(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        depth++;
-        if (root.left == null && root.right == null) {
-            res = Math.min(res, depth);
-        }
-        traverse3MS(root.left);
-        traverse3MS(root.left);
-        depth--;
-    }
-    
-    
-    public int minDepResMS(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        if (root.left == null && root.right == null) {
-            return 1;
-        }
-        int min_depth = Integer.MAX_VALUE;
-        if (root.left != null) {
-            min_depth = Math.min(minDepResMS(root.left), min_depth);
-        }
-
-        if (root.right != null) {
-            min_depth = Math.min(minDepResMS(root.right), min_depth);
-        }
-        return min_depth + 1;
-    }
-
+//    /**
+//     * 最小深度- DFS法
+//     * @param root
+//     */
+//    public static void traverseMinDepth(TreeNode root) {
+//        if (root == null) {
+//            return;
+//        }
+//        depth++;
+//
+//        if (root.right == null && root.right == null) {
+//            res = Math.min(res, depth);
+//        }
+//
+//        traverseMinDepth(root.left);
+//        traverseMinDepth(root.right);
+//
+//        depth--;
+//    }
+//
+//    public static int minDepthDP(TreeNode root) {
+//        // base case
+//        if (root == null) {
+//            return 0;
+//        }
+//
+//        if (root.left == null && root.left.right == null) {
+//            return 1;
+//        }
+//
+//        int depth = Integer.MAX_VALUE;
+//        if (root.left != null) {
+//            depth = Math.min(minDepthDP(root.left), depth);
+//        }
+//
+//        if (root.right != null) {
+//            depth = Math.min(minDepthDP(root.right), depth);
+//        }
+//
+//        return depth + 1;
+//    }
 
 }

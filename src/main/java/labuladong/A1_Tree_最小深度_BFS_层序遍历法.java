@@ -102,53 +102,53 @@ public class A1_Tree_最小深度_BFS_层序遍历法 {
         // traverse(root);
         // System.out.println(res);
         // dfsWithLevelPrint(root);
-//        List<List<Integer>> lists = dfsWithLevel(root);
-//        System.out.println(lists);
+        //        List<List<Integer>> lists = dfsWithLevel(root);
+        //        System.out.println(lists);
 
         dfsItePrint(root);
 
     }
 
-    /**
-     * 打印每一层
-     * @param root
-     */
-    public static void dfsWithLevelPrint(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-
-        Queue<TreeNode> queue = new LinkedList<>();
-        Queue<Integer> levelQueue = new LinkedList<>();
-
-        queue.offer(root);
-        levelQueue.offer(0);
-
-        int curLevel = 0;
-        System.out.print("Level " + curLevel + ": ");
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            int level = levelQueue.poll();
-
-            if (level != curLevel) {
-                curLevel = level;
-                System.out.println();
-                System.out.print("Level " + curLevel + ": ");
-            }
-
-            System.out.print(node.val + " ");
-
-            if (node.left != null) {
-                queue.offer(node.left);
-                levelQueue.offer(level + 1);
-            }
-
-            if (node.right != null) {
-                queue.offer(node.right);
-                levelQueue.offer(level + 1);
-            }
-        }
-    }
+    //    /**
+    //     * 打印每一层
+    //     * @param root
+    //     */
+    //    public static void dfsWithLevelPrint(TreeNode root) {
+    //        if (root == null) {
+    //            return;
+    //        }
+    //
+    //        Queue<TreeNode> queue = new LinkedList<>();
+    //        Queue<Integer> levelQueue = new LinkedList<>();
+    //
+    //        queue.offer(root);
+    //        levelQueue.offer(0);
+    //
+    //        int curLevel = 0;
+    //        System.out.print("Level " + curLevel + ": ");
+    //        while (!queue.isEmpty()) {
+    //            TreeNode node = queue.poll();
+    //            int level = levelQueue.poll();
+    //
+    //            if (level != curLevel) {
+    //                curLevel = level;
+    //                System.out.println();
+    //                System.out.print("Level " + curLevel + ": ");
+    //            }
+    //
+    //            System.out.print(node.val + " ");
+    //
+    //            if (node.left != null) {
+    //                queue.offer(node.left);
+    //                levelQueue.offer(level + 1);
+    //            }
+    //
+    //            if (node.right != null) {
+    //                queue.offer(node.right);
+    //                levelQueue.offer(level + 1);
+    //            }
+    //        }
+    //    }
 
     /**
      * 记录每一层,迭代法
@@ -213,62 +213,98 @@ public class A1_Tree_最小深度_BFS_层序遍历法 {
         return res;
     }
 
+    //    public int minDepthMS(TreeNode root) {
+    //        if (root == null) {
+    //            return 0;
+    //        }
+    //        Queue<TreeNode> q = new LinkedList<>();
+    //        q.offer(root);
+    //        int depth = 1;
+    //
+    //        while (!q.isEmpty()) {
+    //            int sz = q.size();
+    //            for (int i =0; i< sz; i++) {
+    //                TreeNode node = q.poll();
+    //
+    //                // 判断是否到达叶子节点
+    //                if (node.left == null && node.right == null) {
+    //                    return depth;
+    //                }
+    //
+    //                if (node.left != null) {
+    //                    q.offer(node.left);
+    //                }
+    //                if (node.right != null) {
+    //                    q.offer(node.right);
+    //                }
+    //                depth++;
+    //            }
+    //        }
+    //        return depth;
+    //    }
+    //
+    //    public List<List<Integer>> dfsIteMS(TreeNode root) {
+    //        LinkedList<List<Integer>> res = new LinkedList<>();
+    //        if (root == null) {
+    //            return res;
+    //        }
+    //
+    //        Queue<TreeNode> q = new LinkedList<>();
+    //        q.offer(root);
+    //
+    //        while (!q.isEmpty()) {
+    //            int zs =  q.size();
+    //            LinkedList<Integer> levelList = new LinkedList();
+    //            for (int i = 0; i < zs;i++) {
+    //                TreeNode node = q.poll();
+    //                levelList.addFirst(node.val);
+    //                if (node.left != null) {
+    //                    q.offer(node.left);
+    //                }
+    //                if (node.right != null) {
+    //                    q.offer(node.right);
+    //                }
+    //            }
+    //            res.addFirst(levelList);
+    //        }
+    //        return res;
+    //    }
 
-    public int minDepthMS(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        int depth = 1;
-
-        while (!q.isEmpty()) {
-            int sz = q.size();
-            for (int i =0; i< sz; i++) {
-                TreeNode node = q.poll();
-
-                // 判断是否到达叶子节点
-                if (node.left == null && node.right == null) {
-                    return depth;
-                }
-
-                if (node.left != null) {
-                    q.offer(node.left);
-                }
-                if (node.right != null) {
-                    q.offer(node.right);
-                }
-                depth++;
-            }
-        }
-        return depth;
-    }
-
-    public List<List<Integer>> dfsIteMS(TreeNode root) {
-        LinkedList<List<Integer>> res = new LinkedList<>();
-        if (root == null) {
-            return res;
-        }
-
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-
-        while (!q.isEmpty()) {
-            int zs =  q.size();
-            LinkedList<Integer> levelList = new LinkedList();
-            for (int i = 0; i < zs;i++) {
-                TreeNode node = q.poll();
-                levelList.addFirst(node.val);
-                if (node.left != null) {
-                    q.offer(node.left);
-                }
-                if (node.right != null) {
-                    q.offer(node.right);
-                }
-            }
-            res.addFirst(levelList);
-        }
-        return res;
-    }
+//    /**
+//     * 最小深度,BFS迭代法
+//     * @param root
+//     * @return
+//     */
+//    public int minDepthBFS(TreeNode root) {
+//        if (root == null) {
+//            return 0;
+//        }
+//
+//        Queue<TreeNode> q = new LinkedList<>();
+//        q.offer(root);
+//        int depth = 1;
+//
+//        while (!q.isEmpty()) {
+//            int size = q.size();
+//            for (int i = 0; i < size; i++) {
+//                TreeNode node = q.poll();
+//                // 最深度,BFS遇到第一个叶子节点即最大
+//                if (node.left == null && node.right == null) {
+//                    return depth;
+//                }
+//
+//                if (node.left != null) {
+//                    q.offer(node.left);
+//                }
+//                if (node.right != null) {
+//                    q.offer(root.right);
+//                }
+//
+//            }
+//            depth++;
+//        }
+//
+//        return depth;
+//    }
 
 }

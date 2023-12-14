@@ -140,100 +140,132 @@ public class A6_Str_子串和KPM {
     public static void main(String[] args) {
         String s = "BBC ABCDAB ABCDABCDABDE";
         String p = "ABCDABD";
+//        System.out.println(vioSearchMS2(s, p));
         System.out.println(vioSearch(s, p));
         System.out.println(funSearch(s, p));
         System.out.println(kpmSearch(s, p));
     }
 
-    /**
-     * 自主练习
-     * @param s
-     * @param p
-     * @return
-     */
-    static int vodSearchByMyself(String s, String p) {
-        // 异常处理
+//    /**
+//     * 自主练习
+//     * @param s
+//     * @param p
+//     * @return
+//     */
+//    static int vidSearchByMyself(String s, String p) {
+//        // 异常处理
+//
+//        int sLen = s.length();
+//        int pLen = p.length();
+//
+//        int i = 0;
+//        int j = 0;
+//        while (i < sLen && j < pLen) {
+//            if (s.charAt(i) == p.charAt(j)) {
+//                i++;
+//                j++;
+//            } else {
+//                i = i - j + 1;
+//                j = 0;
+//            }
+//        }
+//
+//        if (j == pLen) {
+//            return i - j;
+//        }
+//
+//        return -1;
+//    }
+//
+//    /**
+//     * 自主练习
+//     * @param s
+//     * @param p
+//     * @return
+//     */
+//    public static int vidSearch(String s, String p) {
+//        // 异常处理
+//        if (s == null || s == "" || p == null || p == "") {
+//            return -1;
+//        }
+//
+//        int sLen = s.length();
+//        int pLen = p.length();
+//
+//        int i = 0;
+//        int j = 0;
+//        while (i < sLen && j < pLen) {
+//            if (s.charAt(i) == p.charAt(j)) {
+//                i++;
+//                j++;
+//            } else {
+//                i = i - j + 1;
+//                j = 0;
+//            }
+//        }
+//
+//        if (j == pLen) {
+//            return i - j;
+//        }
+//
+//        return -1;
+//    }
+//
+//    public static int vioSearchMS(String s, String p) {
+//        if (s == null || s == "" || p == null || p == "") {
+//            return -1;
+//        }
+//        int sLen = s.length();
+//        int pLen = p.length();
+//
+//        int i = 0;
+//        int j = 0;
+//        while (i < sLen && j < pLen) {
+//            if (s.charAt(i) == p.charAt(j)) {
+//                i++;
+//                j++;
+//            } else {
+//                i = i - j + 1;
+//                j = 0;
+//            }
+//        }
+//
+//        if (j == pLen) {
+//            return i - j;
+//        }
+//
+//        return -1;
+//    }
+//
+//
+//    public static int vioSearchMS2(String s, String p) {
+//        if (s == null || s == "" || p == null || p == "") {
+//            return -1;
+//        }
+//
+//        int up=0;
+//        int down = 0;
+//
+//        // 双指针同时移动,暴力搜索
+//        while (up < s.length() && down < p.length()){
+//
+//            if (s.charAt(up) == p.charAt(down)) {
+//                up++;
+//                down++;
+//            } else {
+//                up=up-down +1;
+//                down=0;
+//            }
+//        }
+//
+//        // 结束条件
+//        if (down ==p.length()) {
+//           return up-down;
+//        }
+//
+//        return -1;
+//    }
 
-        int sLen = s.length();
-        int pLen = p.length();
 
-        int i = 0;
-        int j = 0;
-        while (i < sLen && j < pLen) {
-            if (s.charAt(i) == p.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                i = i - j + 1;
-                j = 0;
-            }
-        }
-
-        if (j == pLen) {
-            return i - j;
-        }
-
-        return -1;
-    }
-
-    /**
-     * 自主练习
-     * @param s
-     * @param p
-     * @return
-     */
-    public static int vidSearch(String s, String p) {
-        // 异常处理
-        if (s == null || s == "" || p == null || p == "") {
-            return -1;
-        }
-
-        int sLen = s.length();
-        int pLen = p.length();
-
-        int i = 0;
-        int j = 0;
-        while (i < sLen && j < pLen) {
-            if (s.charAt(i) == p.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                i = i - j + 1;
-                j = 0;
-            }
-        }
-
-        if (j == pLen) {
-            return i - j;
-        }
-
-        return -1;
-    }
-
-    public static int vioSearchMS(String s, String p) {
-        if (s == null || s == "" || p == null || p == "") {
-            return -1;
-        }
-        int sLen = s.length();
-        int pLen = p.length();
-
-        int i = 0;
-        int j = 0;
-        while (i < sLen && j < pLen) {
-            if (s.charAt(i) == p.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                i = i - j + 1;
-                j = 0;
-            }
-        }
-
-        if (j == pLen) {
-            return i - j;
-        }
-
-        return -1;
-    }
 
 }

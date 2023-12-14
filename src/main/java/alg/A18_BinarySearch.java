@@ -1,8 +1,9 @@
-package alg; /**
- * Alipay.com Inc.
- * Copyright (c) 2004-2022 All Rights Reserved.
- */
+package alg;
 
+/**
+* Alipay.com Inc.
+* Copyright (c) 2004-2022 All Rights Reserved.
+*/
 
 import java.util.*;
 
@@ -120,7 +121,6 @@ public class A18_BinarySearch {
         return -1;
     }
 
-
     public boolean isIn(int[][] arr, int target) {
         for (int row = 0; row < arr[0].length; row++) {
             if (binSearch(arr[row], target)) {
@@ -157,4 +157,58 @@ public class A18_BinarySearch {
 
         return false;
     }
+
+    /**
+     * 二位数据中是否存在指定的target元素
+     * @param arr
+     * @param target
+     * @return
+     */
+    public static boolean isContains(int[][] arr, int target) {
+        if (arr == null) {
+            return false;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            boolean found = binSearch2(arr[i], target);
+            if (found) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean binSearch2(int[] arr, int target) {
+        if (arr == null) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        // 异常情况
+        if (arr[left] > target || arr[right] < target || left > right) {
+            return false;
+        }
+
+        while (left < right) {
+            int mid = (left + right) / 2;
+            // 找到
+            if (arr[mid] == target) {
+                return true;
+            }
+            // 在左边,指针左移动
+            else if (arr[mid] > target) {
+                right = mid - 1;
+            }
+            // 在右边,指针右移动
+            else {
+                left = mid + 1;
+            }
+        }
+
+        return false;
+    }
+
 }

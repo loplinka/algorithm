@@ -78,28 +78,61 @@ public class A1_Tree_最大深度 {
         traverse(root);
         System.out.println(res);
     }
-    
-    
-    public void traverse3MS(TreeNode root) {
-        if (root == null) {
-            return;
-        }
 
-        depth++;
-        res = Math.max(res, depth);
-        traverse3MS(root.left);
-        traverse3MS(root.right);
-        depth--;
-    }
+    //
+    //    public void traverse3MS(TreeNode root) {
+    //        if (root == null) {
+    //            return;
+    //        }
+    //
+    //        depth++;
+    //        res = Math.max(res, depth);
+    //        traverse3MS(root.left);
+    //        traverse3MS(root.right);
+    //        depth--;
+    //    }
+    //
+    //    public int traverse4MS(TreeNode root) {
+    //        if (root == null) {
+    //            return 0;
+    //        }
+    //
+    //        int lMax = traverse4MS(root.left);
+    //        int rMax = traverse4MS(root.right);
+    //
+    //        return Math.max(lMax, rMax) + 1;
+    //    }
 
-    public int traverse4MS(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        int lMax = traverse4MS(root.left);
-        int rMax = traverse4MS(root.right);
-
-        return Math.max(lMax, rMax) + 1;
-    }
+//    /**
+//     * 回溯法
+//     */
+//    public void maxDepthIteMS(TreeNode root) {
+//        if (root == null) {
+//            return;
+//        }
+//
+//        // 进入之前做选择
+//        depth++;
+//        // 前序位置计算
+//        res = Math.max(res, depth);
+//        maxDepthIteMS(root.left);
+//        maxDepthIteMS(root.right);
+//        // 退出时候撤销选择
+//        depth--;
+//    }
+//
+//    /**
+//     * 动规法
+//     * @param root
+//     * @return
+//     */
+//    public int maxDepthRecMS(TreeNode root) {
+//        if (root == null) {
+//            return 0;
+//        }
+//
+//        int leftMax = maxDepthRecMS(root.left);
+//        int rightMax = maxDepthRecMS(root.right);
+//        return Math.max(leftMax, rightMax) + 1;
+//    }
 }
