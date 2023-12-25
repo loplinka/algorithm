@@ -39,7 +39,7 @@ public class A1_Tree_N叉树 {
     }
 
     /**
-     * 如果把前序和后序遍历放到for循环内,仅仅只会跳过根节点,其效果和不放入之前是一样的
+     * 如果把前序和后序遍历放到for循环内,仅仅只会跳过根节点,其他其效果和不放入之前是一样的
      * @param root
      */
     public void traverse2(MultiTreeNode root) {

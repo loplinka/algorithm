@@ -135,4 +135,44 @@ public class A1_Tree_最大深度 {
 //        int rightMax = maxDepthRecMS(root.right);
 //        return Math.max(leftMax, rightMax) + 1;
 //    }
+
+//    private static int depth2;
+//    private static int res2;
+//
+//    /**
+//     *  二叉树的最大深度,回溯法
+//     * @param root
+//     */
+//    public static void maxDepthBackTrace(TreeNode root) {
+//        if (root == null) {
+//            return;
+//        }
+//
+//        // 前序做选择,指针进入树的下一层
+//        depth2++;
+//        res2 = Math.max(res2, depth2);
+//        maxDepthBackTrace(root.left);
+//        maxDepthBackTrace(root.right);
+//        // 后续撤销选择,指针返回上一层
+//        depth2--;
+//    }
+//
+//    /**
+//     * 二叉树的最大深度,动态规划法
+//     *
+//     * @param root
+//     * @return
+//     */
+//    public static int maxDepthDP(TreeNode root) {
+//        if (root == null) {
+//            return 0;
+//        }
+//
+//        int lMax = maxDepthDP(root.left);
+//        int rMax = maxDepthDP(root.left);
+//
+//        return 1 + Math.max(lMax, rMax);
+//    }
+    
+    
 }
