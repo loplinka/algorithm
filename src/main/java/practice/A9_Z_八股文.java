@@ -128,16 +128,68 @@ public class A9_Z_八股文 {
      *      3.帮助InnoDB实现 MVCC
      *
      *
-     *
-     *
-     *
-     *
-     *
      * 五.优化
      *
      *
      *
-     * Redis,
+     * Redis
+     * 一.为什么这么快
+     *    1.基于内存
+     *    2.基于Reactor模式设计开发的高效的时间处理模型,主要是单线程事件循环和IO多路复用
+     *    3.内置多种优化过的数据类型/结构
+     *
+     * 二.数据类型
+     *    1.五种基础类型:String,List,Set,Hash,Zset
+     *    2.三种特殊类型:HyperLogLog(基数统计),Bitmao(位图),Bitfield(位域)
+     *
+     * 三.持久化机制
+     *    持久机制有RDB持久,AOF持久,两种混合三种方式,
+     *
+     * 四.线程模型
+     *    基于Reactor模式设计开发的高效的时间处理模型(Netty现成模型也是基于Reactor模式)
+     *    Socket    IO Multiplex
+     *
+     *    Socket1    Socket2
+     *    Socket2 -> Socket3    ->      Event Loop    -> Task Queue -> Event Dispatcher  -> Event Processors
+     *    Socket3    Socket1
+     *
+     *              Multi-threaded     Single-threaded
+     *
+     *
+     * 五.Redis Sentinel: 自动故障转移
+     *  Sentinel哨兵,不提供读写服务,依赖于Redis工作,Redis2.8版本之后发布
+     *  Sentinel实现了Redis集群的高可用,在出从复制实现的集群下,多了一个Sentinel的角色来帮助监控Redis节点的运行状态和故障转移(FailOver)
+     *  当Master节点出现故障啥时候,Sentinel会自动选出一个Slave升级为Master,确保集群可用,整个过程完全自动
+     *  主要有4个功能:
+     *      监控: 监控节点是否正常
+     *      故障转移: 当Master节点出现故障啥时候,Sentinel会自动选出一个Slave升级为Master,确保集群可用,整个过程完全自动
+     *      通知: 通知Slave新的master信息,让他们链接新的Master,成为他的Slave
+     *      配置提供: 客户端连接Sentinel新的master地址,如果发生故障转移,sentinel会通知master链接信息给客户端
+     *   如果要保证高可用,哨兵配置成单数而且要保证数量大于等于3
+     *
+     *  Sentinel如何选出新的Master
+     *      1.slave优先级,值越小分越高,越有机会成为Master
+     *      2.复制进度:Sentinel选出数据最完整的,也就是复制进度最快的成为Master
+     *      3.运行id:一般经过前边两轮就选出Master了,如果多个slave的优先级和复制进度一样的话,选择运行id最小的成为Master
+     *  Sentinel中如何选出集群中的Leader
+     *      使用公识算法
+     *
+     * 六.Redis Cluster: 切片集群,满足高并发和大数据量
+     *      Redis切片集群就是部署多态redis主节点master,在这些节点之间平等,并没有主从之说,同时对外提供读写服务
+     *      缓存的数据相对均匀的分布在这些redis实例上,客户端的请求通过路由规则转发到master上
+     *    Redis在3.0之后退出了自己的分片集群方案,之前都是使用codis之类的第三方方案
+     *
+     *   Cluster如何分片
+     *   没有采用一致性哈希,而是采用哈希槽的方式,每一个键值对都属于一个hash slot
+     *   Redis Cluster通常有16384哥哈希槽,一个key对应的那个槽,对key计算CRC16校验码,再对16384取模,得到对应hash槽
+     *
+     *   为什么是16384?
+     *   CRC-16的校验码有16为,理论上可以产生,2的16次方=65536,而redis选择了2的14次方=16384
+     *   1.心跳包16k占用内存
+     *   2.Cluster一般扩展不会超过1000个,16384完全够用
+     *
+     *
+     *
      *
      *
      *
