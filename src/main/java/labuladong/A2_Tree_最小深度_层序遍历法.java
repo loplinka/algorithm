@@ -86,11 +86,15 @@ public class A2_Tree_最小深度_层序遍历法 {
         if (root == null) {
             return 0;
         }
-        int m1 = minDepthDp(root.left);
-        int m2 = minDepthDp(root.right);
-        //1.如果左孩子和右孩子有为空的情况，直接返回m1+m2+1
-        //2.如果都不为空，返回较小深度+1
-        return root.left == null || root.right == null ? m1 + m2 + 1 : Math.min(m1, m2) + 1;
+        if (root.left == null) {
+            return minDepthDp(root.right) + 1;
+        }
+        if (root.right == null) {
+            return minDepthDp(root.left) + 1;
+        }
+        int leftMinDepth = minDepthDp(root.left);
+        int rightMinDepth = minDepthDp(root.right);
+        return Math.min(leftMinDepth, rightMinDepth) + 1;
     }
 
     public static void main(String[] args) {
