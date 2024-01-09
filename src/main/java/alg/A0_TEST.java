@@ -15,12 +15,12 @@ public class A0_TEST {
         Integer b = 2;
         Integer c = 3;
         a = b;
-        System.out.println(a);
+        System.out.println("a=" + a);
         b = c;
-        System.out.println(a);
+        System.out.println("a=" +a);
         c = new Integer(4);
-        System.out.println(a);
-        System.out.println(c);
+        System.out.println("a=" +a);
+        System.out.println("c=" +c);
 
 
     }
