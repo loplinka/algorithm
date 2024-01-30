@@ -96,6 +96,33 @@ public class A3_ArrayAndLinkedList {
         return prev;
     }
 
+
+    /**
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode reverseListMS(ListNode head) {
+
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while(curr != null) {
+            // 暂存下一个节点
+            ListNode next = curr.next;
+
+            // 下一个节点置空
+            curr.next = prev;
+            // 上一个节点等于当前节点
+            prev = curr;
+
+            // 当前节点等于暂存的下一节点
+            curr = next;
+        }
+
+        return prev;
+     }
+
     /**
      * 双指针法
      * @param head
