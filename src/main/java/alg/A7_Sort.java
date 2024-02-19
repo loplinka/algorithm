@@ -136,16 +136,19 @@ public class A7_Sort {
      *
      * https://blog.csdn.net/weixin_39902962/article/details/123703648
      * https://blog.csdn.net/youzi_qiu7/article/details/107685339?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-107685339-blog-124094091.t0_edu_mix&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-107685339-blog-124094091.t0_edu_mix&utm_relevant_index=1
-     * @param array
+     * @param arr
      * @param low 待分区数组最小下标
      * @param high 待分区数组最大下标
      * @return
      */
-    public static void quickSort(int[] array, int low, int high) {
+    public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            int position = partition(array, low, high);
-            quickSort(array, low, position - 1);
-            quickSort(array, position + 1, high);
+            // 找到基准元素的位置
+            int pivotIndex = partition(arr, low, high);
+
+            // 递归地对基准元素左右两边的子数组进行快速排序
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
         }
     }
 
