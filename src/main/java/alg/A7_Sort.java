@@ -149,22 +149,29 @@ public class A7_Sort {
         }
     }
 
-    public static int partition(int[] array, int low, int high) {
-        int pivot = array[high];
-        int pointer = low;
-        for (int i = low; i < high; i++) {
-            if (array[i] <= pivot) {
-                int temp = array[i];
-                array[i] = array[pointer];
-                array[pointer] = temp;
-                pointer++;
+    public static int partition(int[] arr, int low, int high) {
+        // 选择最右边的元素作为基准
+        int pivot = arr[high];
+        int i = low - 1;
+
+        // 将小于基准的元素移到基准的左边，大于等于基准的元素移到基准的右边
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr, i, j);
             }
-            //System.out.println(Arrays.toString(array));
         }
-        int temp = array[pointer];
-        array[pointer] = array[high];
-        array[high] = temp;
-        return pointer;
+
+        // 将基准元素移到正确的位置
+        swap(arr, i + 1, high);
+
+        return i + 1;
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
 }

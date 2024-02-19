@@ -8,7 +8,7 @@ package practice;
  * @author Baojiang Yang
  * @version : A9_Z_八股文.java, v 0.1 2024年01月01日 12:14  Baojiang Yang Exp $
  */
-public class A9_Z_八股文 {
+public class A9_Z_BaGu {
 
     /**
      * MySQL
@@ -224,7 +224,10 @@ public class A9_Z_八股文 {
      *
      * 一.开放平台鉴权问题:
      *  (App ID）和密钥（App Secret）颁发AccessToken,并且每次都要进行鉴权
-     *  往细上了说,JWT,传输中的安全加密问题,堆成加密和非对称加密,技术有哪些
+     *
+     *  往细上了说,JWT,传输中的安全加密问题,对称加密和非对称加密,技术有哪些
+     *  https安全问题: https://hailiang.feishu.cn/wiki/ZGJXwXY3aifucbkzamqctOegnKT
+     *
      *
      * 二.快速排序
      *  基于分治法。快速排序的基本思想是选取一个基准元素（通常是数组中的一个元素），通过一趟排序将数组分成两个部分，其中一部分的所有元素小于基准元素，另一部分的所有元素大于基准元素。然后递归地对这两部分进行排序，直到整个数组有序。
