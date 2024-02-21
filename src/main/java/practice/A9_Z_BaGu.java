@@ -205,20 +205,34 @@ public class A9_Z_BaGu {
      *      生态系统兼容性无可匹敌:
      *
      * 二.核心概念
-     * Producer
-     * Consumer
-     * Broker
-     * Topic
-     * Partition
+     * Producer：生产者，负责向 Kafka 集群发送消息。
+     * Broker：Kafka 集群中的服务器节点，负责存储和处理消息。
+     * Consumer：消费者，从 Kafka 集群读取消息。
+     * Topic：消息主题，将消息分类存储的逻辑单位。
+     * Partition：分区，每个主题可以分成多个分区，每个分区可以在不同的服务器上，提高并行性和容错性。
+     * Replication：副本，Kafka 可以为每个分区维护多个副本，确保数据的可靠性和容错性。
+     * ZooKeeper：Kafka 使用 ZooKeeper 来进行集群管理和协调。
      *
      *
+     * Kafka 通过多种机制来确保消息不丢失：
+     *
+     * 1. 消息持久化：
+     *      Kafka 将消息持久化到磁盘上，即使在消息被消费之后，消息仍然会保存在磁盘上直到设定的保留策略删除为止。这确保了即使在生产者发送消息之后，但在消息被完全处理之前，消息也不会丢失。
+     * 2. 副本机制：
+     *      Kafka 使用副本机制来确保数据的可靠性。每个分区可以配置多个副本，这些副本分布在不同的 Broker 上。其中一个副本是 Leader，负责处理客户端的读写请求，其他副本是 Followers，用于数据备份。当 Leader 副本发生故障时，Kafka 会自动选举一个新的 Leader，确保数据的可用性。
+     * 3.ACK机制：
+     *  生产者发送消息给 Kafka 集群时，可以配置 ACK（Acknowledgement）机制。ACK 机制用于指定生产者收到服务器确认的方式。ACK 机制有三种模式：
+     *  0：生产者不等待任何确认。这种模式下，消息可能会丢失。
+     *  1：Leader 副本确认。生产者在消息被 Leader 副本确认后即可继续发送下一条消息。如果 Leader 副本发生故障，消息可能会丢失。
+     *  all：所有副本确认。生产者在所有副本都确认接收到消息后才继续发送下一条消息。这种模式下，即使 Leader 副本发生故障，仍然有其他副本存储着消息，不会丢失。
+     * 4. ISR机制：
+     *  Kafka 使用 ISR（In-Sync Replicas）机制来确保副本的一致性。ISR 是指与 Leader 副本保持同步的副本集合。当 Leader 副本发送消息后，只有在 ISR 中的副本确认接收到消息后，Leader 副本才会认为消息被成功写入。如果某个副本无法及时与 Leader 同步，该副本将从 ISR 中被移除，直到它再次与 Leader 同步。
      *
      *
      * scheduler
      *
      *
      * ElasticSearch
-     *
      *
      *
      * 得物八股文:
