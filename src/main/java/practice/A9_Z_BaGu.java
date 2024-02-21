@@ -117,11 +117,11 @@ public class A9_Z_BaGu {
      *        也就是说,redo log具备了崩溃恢复的能力
      *
      *     binlog和redo log的区别
-     *      1.binlog主要用于数据还原,数据级别的的回复,比如主从复制
+     *      1.binlog主要用于数据还原,数据级别的的恢复,比如主从复制
      *          redo log主要用于保证事务持久性,属于事务级别的数据恢复
-     *       2.redo log是InnoDB特有的,binlog是所有引擎都有的,因为并log是MySQL的Server层实现的
+     *       2.redo log是InnoDB特有的,binlog是所有引擎都有的,因为binlog是MySQL的Server层实现的
      *        3.redo log是物理日志,主要记录某个页的秀应该,binlog属于逻辑日志,主要记录数据库执行的所有DML和DDL修改
-     *       4.binlog通过追加的方式写入,没有大小限制,redog通过循环方式写入,大小固定,写到末尾时会回到开头循环日志
+     *       4.binlog通过追加的方式写入,没有大小限制,redo log通过循环方式写入,大小固定,写到末尾时会回到开头循环日志
      *
      *    4.undo log 撤销日志
      *      1.保证事务的原子性,每一个事务对是数据的修改都会记录到undo log中,当事务需要回滚的时候,就利用undo log将数据恢复大盘事务开始前的状态
