@@ -6,6 +6,7 @@ package alg;
 
 import base.ListNode;
 import base.TreeNode;
+import com.google.common.collect.Lists;
 
 import java.util.*;
 
@@ -15,19 +16,19 @@ import java.util.*;
  */
 public class A0_TEST {
 
-    public static void main(String[] args) {
-        Integer a = 1;
-        Integer b = 2;
-        Integer c = 3;
-        a = b;
-        System.out.println("a=" + a);
-        b = c;
-        System.out.println("a=" + a);
-        c = new Integer(4);
-        System.out.println("a=" + a);
-        System.out.println("c=" + c);
-
-    }
+//    public static void main(String[] args) {
+//        Integer a = 1;
+//        Integer b = 2;
+//        Integer c = 3;
+//        a = b;
+//        System.out.println("a=" + a);
+//        b = c;
+//        System.out.println("a=" + a);
+//        c = new Integer(4);
+//        System.out.println("a=" + a);
+//        System.out.println("c=" + c);
+//
+//    }
 
     void printRe1(ListNode head) {
         Stack<Integer> stack = new Stack<>();
