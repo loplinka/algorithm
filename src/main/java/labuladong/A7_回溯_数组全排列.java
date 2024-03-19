@@ -24,6 +24,12 @@ public class A7_回溯_数组全排列 {
         return res;
     }
 
+    /**
+     * 路径: 记录在list中
+     * @param nums
+     * @param list
+     * @param res
+     */
     private static void dfs(int[] nums, List<Integer> list, List<List<Integer>> res) {
         if (list.size() == nums.length) {
             res.add(new ArrayList<>(list));
@@ -33,7 +39,7 @@ public class A7_回溯_数组全排列 {
             if (list.contains(nums[i])) {
                 continue;
             }
-            //做选择
+            // 做选择
             list.add(nums[i]);
             // 进入下一层决策树
             dfs(nums, list, res);
