@@ -33,8 +33,11 @@ public class A7_回溯_数组全排列 {
             if (list.contains(nums[i])) {
                 continue;
             }
+            //做选择
             list.add(nums[i]);
+            // 进入下一层决策树
             dfs(nums, list, res);
+            // 撤销选择
             list.remove(list.size() - 1);
         }
     }
