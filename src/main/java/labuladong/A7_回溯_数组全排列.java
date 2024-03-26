@@ -26,9 +26,9 @@ public class A7_回溯_数组全排列 {
 
     /**
      * 路径: 记录在list中
-     * @param nums
-     * @param list
-     * @param res
+     * @param nums 全排列数字
+     * @param list 当前路径
+     * @param res 返回结果
      */
     private static void dfs(int[] nums, List<Integer> list, List<List<Integer>> res) {
         if (list.size() == nums.length) {
