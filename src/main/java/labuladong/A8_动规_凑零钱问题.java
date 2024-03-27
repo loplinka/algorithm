@@ -79,14 +79,15 @@ public class A8_动规_凑零钱问题 {
         }
 
         int res = Integer.MAX_VALUE;
+        // 这里使用了一个循环来尝试每一种硬币的组合。对于每个硬币，它计算了减去当前硬币面值后的子问题 dp1(coins, amount - coin) 的解，并将其保存在 subProblem 变量中
         for (int coin : coins) {
             // 计算子问题的结果
             int subProblem = dp1(coins, amount - coin);
-            // 子问题无解则跳过
+            //如果子问题无解（即返回-1），则跳过这个硬币，因为它不能用于组成目标金额
             if (subProblem == -1) {
                 continue;
             }
-            // 在子问题中选择最优解,然后后+1
+            // 如果子问题有解，则将当前硬币的数量加1，即 subProblem + 1，然后用 Math.min() 方法更新最小硬币数量 res
             res = Math.min(res, subProblem + 1);
         }
 
@@ -97,7 +98,7 @@ public class A8_动规_凑零钱问题 {
      * 二、带备忘录的递归
      */
 
-     static int[] memo;
+    static int[] memo;
 
     static int coinChange2(int[] coins, int amount) {
 
@@ -107,7 +108,7 @@ public class A8_动规_凑零钱问题 {
         return dp2(coins, amount);
     }
 
-    static int dp2(int[] coins, int amount){
+    static int dp2(int[] coins, int amount) {
 
         // base case
         if (amount == 0) {
@@ -118,26 +119,60 @@ public class A8_动规_凑零钱问题 {
         }
 
         // 备忘录,防止重复计算
-        if(memo[amount] != -666) {
+        if (memo[amount] != -666) {
             return memo[amount];
         }
 
         int res = Integer.MAX_VALUE;
-        for (int coin: coins) {
+        for (int coin : coins) {
             // 计算子问题结果
-            int subProblem = dp2(coins, amount -coin);
+            int subProblem = dp2(coins, amount - coin);
             // 子问题无解则跳过
             if (subProblem == -1) {
                 continue;
             }
             // 在子问题中选择最优解,然后+1
-            res = Math.min(res, subProblem +1);
+            res = Math.min(res, subProblem + 1);
         }
         // 计算结果放入备忘录
-        memo[amount] = (res == Integer.MAX_VALUE) ? -1: res;
+        memo[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
         return memo[amount];
     }
 
+    /**
+     * 三.dp 数组的迭代解法
+     * 当然，我们也可以自底向上使用 dp table 来消除重叠子问题，关于「状态」「选择」和 base case 与之前没有区别，
+     * dp 数组的定义和刚才 dp 函数类似，也是把「状态」，也就是目标金额作为变量。不过 dp 函数体现在函数参数，而 dp 数组体现在数组索引：
+     *
+     *
+     * 根据我们文章开头给出的动态规划代码框架可以写出如下解法：
+     *
+     * // dp 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚硬币凑出
+     */
+    static int coinChange3(int[] coins, int amount) {
+
+        //数组大小 为amount+1,
+        int[] dp = new int[amount + 1];
+        // 初始时，将数组中所有元素的值填充为 amount + 1，这是一个足够大的值，用于表示无效的状态。
+        Arrays.fill(dp, amount + 1);
+
+        // base case, 当目标金额为0时，不需要任何硬币
+        dp[0] = 0;
+        // 外层的循环在遍历所有状态的所有取值,即遍历所有可能的目标金额 i
+        for (int i = 0; i < dp.length; i++) {
+            // 内层循环遍历硬币数组 coins 中的每个硬币, 并求所有选择的最小值,
+            for (int coin : coins) {
+                // 子问题无解时跳过
+                if (i - coin < 0) {
+                    continue;
+                }
+                // 对于每个目标金额 i，计算减去每个硬币面值后的子问题解 dp[i - coin]，然后取所有可能硬币面值的最小解，并将其存储在 dp[i] 中。
+                dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
+            }
+        }
+        // 最后，返回 dp[amount]，即凑出目标金额所需的最少硬币数量。如果最终得到的值等于 amount + 1，说明无法凑出目标金额，返回-1；否则返回最终的最小硬币数量。
+        return (dp[amount] == amount + 1) ? -1 : dp[amount];
+    }
 
     /**
      * 测试
@@ -147,6 +182,8 @@ public class A8_动规_凑零钱问题 {
         int[] coins = new int[] { 1, 2, 5 };
         int amount = 11;
         System.out.println(coinChange1(coins, amount));
+        System.out.println(coinChange2(coins, amount));
+        System.out.println(coinChange3(coins, amount));
     }
 
 }
